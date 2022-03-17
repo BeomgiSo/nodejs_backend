@@ -5,6 +5,7 @@ const fs = require("fs");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const authRouter = require("./router/authRouter");
+const apiRouter = require("./apiRouter");
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/auth", authRouter); // 기능 분리
-
+app.use("/api",apiRouter);
 
 mongoose
     .connect(process.env.MONGO_URL)
