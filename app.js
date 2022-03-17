@@ -1,17 +1,17 @@
+
 const express = require("express");
 const app = express();
+const fs = require("fs");
 const mongoose = require("mongoose");
-const fs= require("fs"); //파일을 읽을수 있게함
-const dotenv=require("dotenv");
-const authRouter=require("./router/authorRouter");
-
-app.use("/auth",authRouter);
+const dotenv = require("dotenv");
+const authRouter = require("./router/authRouter");
 
 dotenv.config();
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
+app.use("/auth", authRouter); // 기능 분리
 
 
 mongoose
